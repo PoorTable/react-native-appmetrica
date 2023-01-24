@@ -6,7 +6,7 @@
  * https://yandex.com/legal/appmetrica_sdk_agreement/
  */
 
-import {NativeModules} from 'react-native';
+import {NativeModules} from "react-native";
 
 const {AppMetrica} = NativeModules;
 
@@ -15,7 +15,7 @@ type AppMetricaConfig = {
   appVersion?: string,
   crashReporting?: boolean,
   firstActivationAsUpdate?: boolean,
-  location: Location,
+  location?: Location,
   locationTracking?: boolean,
   logs?: boolean,
   sessionTimeout?: number,
@@ -54,11 +54,11 @@ export default {
   },
 
   // Android
-  async getLibraryApiLevel(): number {
+  async getLibraryApiLevel(): Promise<number> {
     return AppMetrica.getLibraryApiLevel();
   },
 
-  async getLibraryVersion(): string {
+  async getLibraryVersion(): Promise<number> {
     return AppMetrica.getLibraryVersion();
   },
 
@@ -66,7 +66,7 @@ export default {
     AppMetrica.pauseSession();
   },
 
-  reportAppOpen(deeplink: ?string = null) {
+  reportAppOpen(deeplink: string | null = null) {
     AppMetrica.reportAppOpen(deeplink);
   },
 
@@ -74,7 +74,7 @@ export default {
     AppMetrica.reportError(error);
   },
 
-  reportEvent(eventName: string, attributes: ?Object = null) {
+  reportEvent(eventName: string, attributes: Object = null) {
     AppMetrica.reportEvent(eventName, attributes);
   },
 
@@ -94,7 +94,7 @@ export default {
     AppMetrica.sendEventsBuffer();
   },
 
-  setLocation(location: ?Location) {
+  setLocation(location?: Location) {
     AppMetrica.setLocation(location);
   },
 

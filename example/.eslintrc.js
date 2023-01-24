@@ -3,7 +3,7 @@ module.exports = {
   extends: '@react-native-community',
   "overrides": [
     {
-      "files": ["index.js"],
+      "files": ["index.ts"],
       "rules": {
         "no-undef": "off"
       },
